@@ -5,7 +5,7 @@ import thunk from "redux-thunk";
 import fetchMock from "fetch-mock";
 import configureMockStore from "redux-mock-store";
 
-//Test and async action
+// Test an async action
 const middleware = [thunk];
 const mockStore = configureMockStore(middleware);
 
@@ -20,6 +20,7 @@ describe("Async Actions", () => {
         body: courses,
         headers: { "content-type": "application/json" },
       });
+
       const expectedActions = [
         { type: types.BEGIN_API_CALL },
         { type: types.LOAD_COURSES_SUCCESS, courses },

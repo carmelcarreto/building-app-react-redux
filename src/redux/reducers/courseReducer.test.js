@@ -2,7 +2,7 @@ import courseReducer from "./courseReducer";
 import * as actions from "../actions/courseActions";
 
 it("should add course when passed CREATE_COURSE_SUCCESS", () => {
-  //arrange
+  // arrange
   const initialState = [
     {
       title: "A",
@@ -18,10 +18,10 @@ it("should add course when passed CREATE_COURSE_SUCCESS", () => {
 
   const action = actions.createCourseSuccess(newCourse);
 
-  //act
+  // act
   const newState = courseReducer(initialState, action);
 
-  //assert
+  // assert
   expect(newState.length).toEqual(3);
   expect(newState[0].title).toEqual("A");
   expect(newState[1].title).toEqual("B");
@@ -29,7 +29,7 @@ it("should add course when passed CREATE_COURSE_SUCCESS", () => {
 });
 
 it("should update course when passed UPDATE_COURSE_SUCCESS", () => {
-  //arrange
+  // arrange
   const initialState = [
     { id: 1, title: "A" },
     { id: 2, title: "B" },
@@ -39,13 +39,13 @@ it("should update course when passed UPDATE_COURSE_SUCCESS", () => {
   const course = { id: 2, title: "New Title" };
   const action = actions.updateCourseSuccess(course);
 
-  //act
+  // act
   const newState = courseReducer(initialState, action);
-  const updateCourse = newState.find((a) => a.id == course.id);
+  const updatedCourse = newState.find((a) => a.id == course.id);
   const untouchedCourse = newState.find((a) => a.id == 1);
 
-  //assert
-  expect(updateCourse.title).toEqual("New Title");
+  // assert
+  expect(updatedCourse.title).toEqual("New Title");
   expect(untouchedCourse.title).toEqual("A");
   expect(newState.length).toEqual(3);
 });

@@ -24,7 +24,7 @@ it("sets submit button label 'Save' when saving is false", () => {
       authors={authors}
       onSave={jest.fn()}
       onChange={jest.fn()}
-      saving
+      saving={false}
     />
   );
 
